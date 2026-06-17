@@ -52,7 +52,7 @@ In this example we will install an elastic stack (kibana/elasticsearch/filebeat)
     namespace: monitoring
     targetRevision: 9.0.5-bitnamilegacy
     parameters:
-      ingress.kibana.host: "admin.{{.Values.projectValues.rootDomain}}"
+      ingress.kibana.host: "admin.{{.Values.projectValues.stageDomain}}"
   ```
 You need to commit and push this change now. Argo detects the changes and applies them after around 2-3 minutes.
 
@@ -106,7 +106,7 @@ resource "helm_release" "argocd" {
           projectValues = {
             # Set this to enable stage $STAGE-values.yaml
             stage        = var.stage
-            rootDomain  = var.domain_name
+            stageDomain  = var.domain_name
           }
       ...
     }
@@ -116,7 +116,7 @@ resource "helm_release" "argocd" {
 ```
 All _projectValues_ variables are given over to argo, and we can reuse them here.
 
-In this example the _stage_ or _rootDomain_ variables are handed over to argo.
+In this example the _stage_ or _stageDomain_ variables are handed over to argo.
 
 ## How to integrate Business Apps
 

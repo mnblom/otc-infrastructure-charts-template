@@ -4,7 +4,7 @@ ingress:
   paths:
     - /akhq
   hosts:
-    - "admin.{{.Values.projectValues.rootDomain}}"
+    - "admin.{{.Values.projectValues.stageDomain}}"
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"

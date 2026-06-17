@@ -2,7 +2,7 @@ deployment:
   securityContext:
     runAsUser: 1001
 ingress:
-  host: "admin.{{.Values.projectValues.rootDomain}}"
+  host: "admin.{{.Values.projectValues.stageDomain}}"
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: routing-oidc-forward-auth@kubernetescrd
 defaultDashboard:
