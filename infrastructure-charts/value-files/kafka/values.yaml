@@ -1,4 +1,12 @@
+# Bitnami moved its public images to the `bitnamilegacy` repo. The chart already
+# defaults image.repository to bitnamilegacy/kafka, but the Bitnami common library
+# rejects non-standard image repos unless global.security.allowInsecureImages=true.
+global:
+  security:
+    allowInsecureImages: true
 kafka:
+  image:
+    repository: bitnamilegacy/kafka
   metrics:
     kafka:
       enabled: false
