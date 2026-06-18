@@ -1,0 +1,18 @@
+# prometheus-stack overrides for the kiwi/dev stage.
+# NOTE: the Prometheus CRDs are pre-installed by the 20_configuration terraform stage,
+# and this chart already defaults prometheusStack.crds.enabled=false, so there is no
+# CRD conflict and no override is needed for that.
+global:
+  ingress:
+    enabled: true
+    # This chart reads global.ingress.host directly; the platform's generic param
+    # injection sets `ingress.host`, not `global.ingress.host`, so set it explicitly.
+    # Stage-specific value for kiwi/dev. Exposed (behind the basic-auth gateway) at:
+    #   Grafana      -> https://admin.kiwi.iits.tech/grafana
+    #   Prometheus   -> https://admin.kiwi.iits.tech/prometheus
+    #   Alertmanager -> https://admin.kiwi.iits.tech/alertmanager
+    host: admin.kiwi.iits.tech
+prometheusStack:
+  grafana:
+    # Demo only. Grafana also sits behind the basic-auth gateway (oidc-forward-auth middleware).
+    adminPassword: "workshop-demo"

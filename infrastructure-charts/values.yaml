@@ -50,3 +50,7 @@ charts:
     targetRevision: 0.25.1
     valueFile: "value-files/akhq/values.yaml"
   # Override values with local values file
+  prometheus-stack:
+    namespace: monitoring
+    targetRevision: 79.10.0
+    valueFile: "value-files/prometheus-stack/values.yaml"
